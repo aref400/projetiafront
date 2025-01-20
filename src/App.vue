@@ -1,8 +1,11 @@
 <template>
+  <link href="/src/assets/main.css" rel="stylesheet">
   <img alt="Vue logo" src="./assets/logo.png">
   <nav>
-      <ul>
-        <li><router-link to="/">Home</router-link></li>
+      <ul
+      class='lg:flex gap-x-5 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50'>
+        <li class='max-lg:border-b border-gray-300 max-lg:py-3 px-3'>
+          <router-link to="/">Home</router-link></li>
         <li><router-link to="/form">Form</router-link></li>
         <li><router-link to="/condition">Condition</router-link></li>
       </ul>
@@ -20,12 +23,7 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+li {
+  list-style: none;
 }
 </style>
