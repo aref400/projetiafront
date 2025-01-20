@@ -1,7 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <nav>
-      <ul>
+      <ul class="w-full flex items-center justify between block p-6 space-x-6"> 
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/form">Form</router-link></li>
         <li><router-link to="/condition">Condition</router-link></li>
@@ -20,12 +20,12 @@ export default {
 </script>
 
 <style>
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+    text-align: center;
+    color: var(--text-color-primary);
+    margin-top: 60px;
+    background-color: var(--background-color);
 }
 </style>
