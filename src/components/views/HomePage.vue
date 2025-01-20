@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container mx-auto">
       <h1>Bienvenue sur Projet Ia</h1>
       <p>Le but de ce site est de vous proposer des activités a faire en groupe</p>
     </div>
