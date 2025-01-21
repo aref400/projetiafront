@@ -1,20 +1,38 @@
 <template>
-  <nav class="mx-auto flex items-center justify-around p-6 lg:px-8">
-    <div class="">
-      <img class="h-10 w-auto" alt="Vue logo" src="./assets/logo.png">
+  <div class="flex flex-col min-h-screen">
+  <header class="bg-rose-400/50 ">
+    <div class="container mx-auto flex items-center justify-between p-8">
+      <!-- Logo -->
+      <div class="text-xl font-bold">
+        MonLogo
+      </div>
+
+      <!-- Menu -->
+      <nav class="flex space-x-4">
+        <a href="/" class="hover:underline">Accueil</a>
+        <a href="/form" class="hover:underline">Formulaire</a>
+        <a href="/config" class="hover:underline">Configuration</a>
+      </nav>
     </div>
+  </header>
   
-      <ul class="flex flex-row justify-evenly"> 
-        <li class="basis-1/3"><router-link to="/">Home</router-link></li>
-        <li class="basis-1/3"><router-link to="/form">Form</router-link></li>
-        <li class="basis-1/3"><router-link to="/condition">Condition</router-link></li>
-      </ul>
-  </nav>
- 
-  
-    <main>
-      <router-view />
-    </main>
+  <!-- Redirection vers les composants via les routes -->
+  <main class="pt-20 pb-20">
+    <router-view />
+  </main>
+
+  <footer class="bg-rose-400/50">
+    <div class="container mx-auto flex items-center justify-between p-8">
+      <div class="text-xl font-bold">
+        <p>© 2025 Projet IA - Tous droits réservés</p>
+      </div>
+      <div class="flex">
+        <p> Site réalisé par Yev Nico Lucas</p>
+    </div>
+    </div>
+
+  </footer>
+  </div>
 </template>
 
 <script>
@@ -25,6 +43,7 @@ export default {
 </script>
 
 <style>
+
 
 #app {
 
