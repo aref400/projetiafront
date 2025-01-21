@@ -28,7 +28,12 @@ export default {
 
 <style>
 
+
 #app {
+
+    text-align: center;
+    color: var(--text-color-primary);
+    background-color: var(--background-color);
 
     text-align: center;
     color: var(--text-color-primary);
