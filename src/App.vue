@@ -18,8 +18,10 @@
   </header>
   
   <!-- Redirection vers les composants via les routes -->
-  <main class="p">
-    <router-view />
+  <main class="">
+    <transition name="fade-slide" mode="out-in">
+        <router-view />
+    </transition>
   </main>
 
   <footer class="bg-rose-400/50">
@@ -48,9 +50,34 @@ export default {
 
 
 #app {
-
     text-align: center;
     color: var(--text-color-primary);
     background-color: var(--background-color);
+}
+
+/* Animation personnalisée pour les transitions */
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-slide-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-slide-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
 }
 </style>
