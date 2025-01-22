@@ -10,7 +10,7 @@
     >
       <!-- Nombre de personnes -->
       <div class="flex flex-col">
-        <label for="nb_people" class="text-gray-700 font-semibold mb-1">Nombre de personnes :</label>
+        <label for="nb_people" class=" font-semibold mb-1">Nombre de personnes :</label>
         <input 
           id="nb_people" 
           v-model="formData.nb_people" 
@@ -22,7 +22,7 @@
 
       <!-- Ville -->
       <div class="flex flex-col">
-        <label for="city" class="text-gray-700 font-semibold mb-1">Ville :</label>
+        <label for="city" class="font-semibold mb-1">Ville :</label>
         <input 
           id="city" 
           v-model="formData.city" 
@@ -34,7 +34,7 @@
 
       <!-- Lieu -->
       <div class="flex flex-col">
-        <label for="activity_location" class="text-gray-700 font-semibold mb-1">Lieu (intérieur/extérieur) :</label>
+        <label for="activity_location" class="font-semibold mb-1">Lieu (intérieur/extérieur) :</label>
         <select 
           id="activity_location" 
           v-model="formData.activity_location" 
@@ -47,7 +47,7 @@
 
       <!-- Moment de la journée -->
       <div class="flex flex-col">
-        <label for="time_of_day" class="text-gray-700 font-semibold mb-1">Moment de la journée :</label>
+        <label for="time_of_day" class="font-semibold mb-1">Moment de la journée :</label>
         <select 
           id="time_of_day" 
           v-model="formData.time_of_day" 
@@ -64,7 +64,8 @@
         <button 
           type="submit" 
           :disabled="isLoading" 
-          class="w-full bg-rose-400/50 hover:bg-blue-700 font-bold py-2 px-4 rounded-lg transition duration-200 "
+          class="w-full bg-rose-400/50 text-white font-bold py-2 px-4 rounded-lg 
+          transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-rose-400 duration-200 "
         >
           {{ isLoading ? 'Chargement...' : 'Envoyer' }}
         </button>
@@ -77,7 +78,7 @@
     <!-- Affichage de la réponse -->
     <div 
       v-if="response" 
-      class="mt-8 w-full max-w-md bg-green-100 border-l-4 border-green-500 text-green-700 p-4 space-y-2 rounded-lg"
+      class="mt-8 w-full max-w-md bg-green-100 border-l-4 border-green-500 p-4 space-y-2 rounded-lg"
     >
       <p class="font-semibold text-lg">Réponse de l'IA :</p>
       <div v-for="(line, index) in formatResponse(response)" :key="index" class="mt-2">
