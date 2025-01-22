@@ -9,9 +9,10 @@
 
       <!-- Menu -->
       <nav class="flex space-x-4">
-        <a href="/" class="hover:underline">Accueil</a>
-        <a href="/form" class="hover:underline">Formulaire</a>
-        <a href="/config" class="hover:underline">Configuration</a>
+        <RouterLink to="/" class="hover:underline">Accueil</RouterLink>
+        <RouterLink
+        to="/form" class="hover:underline">Formulaire</RouterLink>
+        <RouterLink to="/config" class="hover:underline">Configuration</RouterLink>
       </nav>
     </div>
   </header>
@@ -36,6 +37,7 @@
 </template>
 
 <script>
+
 
 export default {
   name: 'App',
