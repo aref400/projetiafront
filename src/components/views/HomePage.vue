@@ -1,6 +1,6 @@
 <template>
-  <div class=" flex items-center justify-center bg-gray-50">
-    <div class="max-w-4xl text-center p-6 bg-[#404254] shadow-lg rounded-lg">
+  <div class=" flex items-center justify-center bg-gray-50 min-h-screen">
+    <div class="max-w-4xl text-center p-6  bg-[#404254] shadow-lg rounded-lg">
       <!-- Titre principal -->
       <h1 class="text-4xl font-bold  mb-4">Bienvenue sur Plan-it</h1>
       

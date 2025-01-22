@@ -18,7 +18,7 @@
   </header>
   
   <!-- Redirection vers les composants via les routes -->
-  <main class="pt-20 pb-20">
+  <main class="">
     <transition name="fade-slide" mode="out-in">
         <router-view />
     </transition>
