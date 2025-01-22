@@ -18,7 +18,7 @@
   </header>
   
   <!-- Redirection vers les composants via les routes -->
-  <main class="pt-20 pb-20">
+  <main class="p">
     <router-view />
   </main>
 

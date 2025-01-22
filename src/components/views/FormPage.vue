@@ -1,12 +1,12 @@
 <template>
-  <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+  <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
     <!-- Titre -->
     <h1 class="text-4xl font-bold text-blue-600 mb-8">Remplissez le formulaire</h1>
 
     <!-- Formulaire -->
     <form 
       @submit.prevent="handleSubmit" 
-      class="w-full max-w-md bg-white shadow-lg rounded-lg p-6 space-y-6"
+      class="w-full max-w-md  shadow-lg rounded-lg p-6 space-y-6 bg-[#404254]"
     >
       <!-- Nombre de personnes -->
       <div class="flex flex-col">
@@ -60,28 +60,34 @@
 
       <!-- Bouton Envoyer -->
       <div class="text-center">
+       
         <button 
           type="submit" 
-          class="w-full bg-blue-600 font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200"
+          :disabled="isLoading" 
+          class="w-full bg-rose-400/50 hover:bg-blue-700 font-bold py-2 px-4 rounded-lg transition duration-200 "
         >
-          Envoyer
+          {{ isLoading ? 'Chargement...' : 'Envoyer' }}
         </button>
+        <div v-if="isLoading" class="flex items-center justify-center mt-4">
+      <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500"></div>
+    </div>
       </div>
     </form>
 
     <!-- Affichage de la réponse -->
     <div 
-  v-if="response" 
-  class="mt-8 w-full max-w-md bg-green-100 border-l-4 border-green-500 text-green-700 p-4 space-y-2 rounded-lg"
->
-  <p class="font-semibold text-lg">Réponse de l'IA :</p>
-  <!-- Diviser la réponse en différentes idées ou phrases -->
-  <div v-for="(line, index) in formatResponse(response)" :key="index" class="mt-2">
-    <p v-if="line">{{ line }}</p>
-  </div>
-</div>
+      v-if="response" 
+      class="mt-8 w-full max-w-md bg-green-100 border-l-4 border-green-500 text-green-700 p-4 space-y-2 rounded-lg"
+    >
+      <p class="font-semibold text-lg">Réponse de l'IA :</p>
+      <div v-for="(line, index) in formatResponse(response)" :key="index" class="mt-2">
+        <p v-if="line">{{ line }}</p>
+      </div>
+    </div>
   </div>
 </template>
+
+
 
 <script>
 import axiosInstance from '@/services/axiosInstance';
@@ -97,27 +103,32 @@ export default {
         time_of_day: 'jour',
       },
       response: null,
+      isLoading: false, // Indicateur de chargement
     };
   },
   methods: {
-  async handleSubmit() {
-    try {
-      const result = await axiosInstance.post('/ia/ollama', this.formData);
-      this.response = result.data;
-    } catch (error) {
-      console.error('Erreur lors de l’appel API :', error.response || error);
-    }
+    async handleSubmit() {
+      this.isLoading = true; // Activer le loader
+      this.response = null; // Réinitialiser la réponse
+      try {
+        const result = await axiosInstance.post('/ia/ollama', this.formData);
+        this.response = result.data;
+      } catch (error) {
+        console.error('Erreur lors de l’appel API :', error.response || error);
+      } finally {
+        this.isLoading = false; // Désactiver le loader
+      }
+    },
+    formatResponse(response) {
+      return response
+        .split(/[*:.]/g)
+        .map(line => line.trim())
+        .filter(line => line.length > 0);
+    },
   },
-  formatResponse(response) {
-  // Séparer par les caractères *, : ou . sans antislash inutile
-  return response
-    .split(/[*:.]/g) // Pas besoin d'échapper *, : ou . dans ce cas
-    .map(line => line.trim()) // Supprimer les espaces inutiles
-    .filter(line => line.length > 0); // Ignorer les lignes vides
-},
-},
 };
 </script>
+
 
 <style scoped>
 /* Styles personnalisés au besoin */
