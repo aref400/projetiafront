@@ -2,7 +2,7 @@
   <div class=" flex items-center justify-center bg-gray-50">
     <div class="max-w-4xl text-center p-6 bg-[#404254] shadow-lg rounded-lg">
       <!-- Titre principal -->
-      <h1 class="text-4xl font-bold  mb-4">Bienvenue sur Projet IA</h1>
+      <h1 class="text-4xl font-bold  mb-4">Bienvenue sur Plan-it</h1>
       
       <!-- Description -->
       <p class="text-lg text-gray-700 mb-4">
@@ -25,14 +25,16 @@
       </h3>
       
       <!-- Bouton d'accès -->
-       <button class="bg-rose-400/50
-       px-6 py-3 text-white font-medium rounded-md">
+       
         <RouterLink
         to="/form"
       >
-        Accès au formulaire
+      <button class="bg-rose-400/50
+       px-6 py-3 text-white font-medium rounded-md
+       transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-rose-400 duration-200">
+       Accès au formulaire
+      </button>
       </RouterLink>
-       </button>
       
     </div>
   </div>
