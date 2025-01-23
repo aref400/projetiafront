@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-col min-h-screen">
   <header class="bg-rose-400/50 ">
-    <div class="container mx-auto flex items-center justify-between p-8">
+    <div class="container mx-auto flex items-center justify-evenly space-x-40 py-4">
       <!-- Logo -->
-      <div class="text-xl font-bold">
-        MonLogo
-      </div>
+      <RouterLink to="/">
+        <img src="./assets/logo2-projetIA-transparent.png" class="h-16 w-28"/>
+      </RouterLink>
 
       <!-- Menu -->
       <nav class="flex space-x-4">
