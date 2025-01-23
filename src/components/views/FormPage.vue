@@ -15,11 +15,11 @@
 
           <!-- Présence d'enfants -->
           <div class="flex flex-col">
-            <label for="has_children" class="font-semibold mb-1">Y a-t-il des enfants dans le groupe (oui/non) :</label>
-            <select id="has_children" v-model="formData.has_children"
+            <label for="hasChildren" class="font-semibold mb-1">Y a-t-il des enfants dans le groupe (oui/non) :</label>
+            <select id="hasChildren" v-model="formData.hasChildren"
               class="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-              <option value="oui">Oui</option>
-              <option value="non">Non</option>
+              <option value=true>Oui</option>
+              <option value=false>Non</option>
             </select>
           </div>
 
@@ -55,21 +55,21 @@
 
           <!-- Gratuit ou Payant -->
           <div class="flex flex-col">
-            <label for="free_or_paid" class="font-semibold mb-1">Gratuit ou Payant :</label>
-            <select id="free_or_paid" v-model="formData.free_or_paid"
+            <label for="isFree" class="font-semibold mb-1">Gratuit ou Payant :</label>
+            <select id="isFree" v-model="formData.isFree"
               class="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-              <option value="gratuit">Gratuit</option>
-              <option value="payant">Payant</option>
+              <option value=true>Gratuit</option>
+              <option value=false>Payant</option>
             </select>
           </div>
 
           <!-- Semaine Ou Weekend -->
           <div class="flex flex-col">
-            <label for="week" class="font-semibold mb-1">Semaine ou Weekend :</label>
-            <select id="week" v-model="formData.week"
+            <label for="isWeekend" class="font-semibold mb-1">Semaine ou Weekend :</label>
+            <select id="isWeekend" v-model="formData.isWeekend"
               class="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-              <option value="semaine">Semaine</option>
-              <option value="weekend">Weekend</option>
+              <option value= true>Semaine</option>
+              <option value= false>Weekend</option>
             </select>
           </div>
         </div>
@@ -109,12 +109,12 @@ export default {
     return {
       formData: {
         nb_people: 0,
-        has_children : 'non',
+        hasChildren : false,
         city: '',
         activity_location: 'interieur',
-        free_or_paid: 'gratuit',
+        isFree: false,
         time_of_day: 'jour',
-        week: 'weekend',
+        isWeekend: false,
       },
       response: null,
       isLoading: false, // Indicateur de chargement
@@ -122,17 +122,31 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      this.isLoading = true; // Activer le loader
-      this.response = null; // Réinitialiser la réponse
-      try {
-        const result = await axiosInstance.post('/ia/ollama', this.formData);
-        this.response = result.data;
-      } catch (error) {
-        console.error('Erreur lors de l’appel API :', error.response || error);
-      } finally {
-        this.isLoading = false; // Désactiver le loader
-      }
-    },
+  this.isLoading = true;
+  this.response = null;
+  try {
+    // Créer un objet aligné avec le backend si les champs diffèrent
+    const payload = {
+      nb_people: this.formData.nb_people,
+      hasChildren: this.formData.hasChildren, // Correspondance si backend attend `has_children`
+      city: this.formData.city,
+      activity_location: this.formData.activity_location,
+      isFree: this.formData.isFree,      // Correspondance si backend attend `free_or_paid`
+      time_of_day: this.formData.time_of_day,
+      isWeekend: this.formData.isWeekend,          // Correspondance si backend attend `week`
+    };
+    
+    console.log('Données envoyées au backend :', payload);
+    const result = await axiosInstance.post('/ia/ollama', payload);
+    console.log('Réponse de l’API :', result.data);
+    this.response = result.data;
+  } catch (error) {
+    console.error('Erreur lors de l’appel API :', error.response || error);
+  } finally {
+    this.isLoading = false;
+  }
+},
+
     formatResponse(response) {
       return response
         .split(/[*:.]/g)
