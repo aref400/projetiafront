@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+  <div class="flex flex-col items-center justify-center min-h-screen">
     <!-- Titre -->
-    <h1 class="text-4xl font-bold text-blue-600 mb-8">Remplissez le formulaire</h1>
+    <h1 class="text-4xl font-bold mb-8">Remplissez le formulaire</h1>
 
     <!-- Formulaire -->
     <form 
@@ -70,8 +70,8 @@
           {{ isLoading ? 'Chargement...' : 'Envoyer' }}
         </button>
         <div v-if="isLoading" class="flex items-center justify-center mt-4">
-      <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500"></div>
-    </div>
+          <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500"></div>
+        </div>
       </div>
     </form>
 
