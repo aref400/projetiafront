@@ -109,7 +109,7 @@ export default {
     return {
       formData: {
         nb_people: 0,
-        hasChildren : false,
+        hasChildren : true,
         city: '',
         activity_location: 'interieur',
         isFree: false,
