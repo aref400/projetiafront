@@ -8,13 +8,29 @@
       </RouterLink>
 
       <!-- Menu -->
-      <nav class="flex space-x-4">
+      <nav class="hidden md:flex space-x-4">
         <RouterLink to="/" class="hover:underline">Accueil</RouterLink>
         <RouterLink
         to="/form" class="hover:underline">Formulaire</RouterLink>
         <RouterLink to="/config" class="hover:underline">Configuration</RouterLink>
       </nav>
+
+      <!-- Menu burger -->
+      <button class="md:hidden" @click="toggleMenu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
     </div>
+
+    <div v-if="isMobileMenuOpen" class="md:hidden">
+      <nav class="flex flex-col items-center space-y-2 p-4">
+        <RouterLink to="/" class="hover:underline">Accueil</RouterLink>
+        <RouterLink to="/form" class="hover:underline">Formulaire</RouterLink>
+        <RouterLink to="/config" class="hover:underline">Configuration</RouterLink>
+      </nav>
+    </div>
+
   </header>
   
   <!-- Redirection vers les composants via les routes -->
@@ -43,6 +59,16 @@
 
 export default {
   name: 'App',
+  data(){
+    return {
+      isMobileMenuOpen: false,
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    },
+  },
 }
 </script>
 
