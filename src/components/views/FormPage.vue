@@ -9,15 +9,15 @@
           <!-- Nombre de personnes -->
           <div class="flex flex-col">
             <label for="nb_people" class="font-semibold mb-1">Nombre de personnes :</label>
-            <input id="nb_people" v-model="formData.nb_people" type="number" required
-              class="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            <input id="nb_people" v-model="formData.nb_people" type="number" required min="1"
+              class="border border-gray-300 rounded-lg p-2 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none" />
           </div>
 
           <!-- Présence d'enfants -->
           <div class="flex flex-col">
             <label for="hasChildren" class="font-semibold mb-1">Y a-t-il des enfants dans le groupe (oui/non) :</label>
             <select id="hasChildren" v-model="formData.hasChildren"
-              class="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+              class="border border-gray-300 rounded-lg p-2 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none">
               <option value=true>Oui</option>
               <option value=false>Non</option>
             </select>
@@ -27,14 +27,14 @@
           <div class="flex flex-col">
             <label for="city" class="font-semibold mb-1">Ville :</label>
             <input id="city" v-model="formData.city" type="text" required
-              class="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+              class="border border-gray-300 rounded-lg p-2 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none" />
           </div>
 
           <!-- Moment de la journée -->
           <div class="flex flex-col">
             <label for="time_of_day" class="font-semibold mb-1">Moment de la journée :</label>
             <select id="time_of_day" v-model="formData.time_of_day"
-              class="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+              class="border border-gray-300 rounded-lg p-2 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none">
               <option value="jour">Jour</option>
               <option value="nuit">Nuit</option>
             </select>
@@ -47,7 +47,7 @@
           <div class="flex flex-col">
             <label for="activity_location" class="font-semibold mb-1">Lieu (intérieur/extérieur) :</label>
             <select id="activity_location" v-model="formData.activity_location"
-              class="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+              class="border border-gray-300 rounded-lg p-2 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none">
               <option value="interieur">Intérieur</option>
               <option value="exterieur">Extérieur</option>
             </select>
@@ -57,7 +57,7 @@
           <div class="flex flex-col">
             <label for="isFree" class="font-semibold mb-1">Gratuit ou Payant :</label>
             <select id="isFree" v-model="formData.isFree"
-              class="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+              class="border border-gray-300 rounded-lg p-2 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none">
               <option value=true>Gratuit</option>
               <option value=false>Payant</option>
             </select>
@@ -67,7 +67,7 @@
           <div class="flex flex-col">
             <label for="isWeekend" class="font-semibold mb-1">Semaine ou Weekend :</label>
             <select id="isWeekend" v-model="formData.isWeekend"
-              class="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+              class="border border-gray-300 rounded-lg p-2 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none">
               <option value= true>Semaine</option>
               <option value= false>Weekend</option>
             </select>
@@ -89,7 +89,7 @@
 
 
     <!-- Affichage de la réponse -->
-    <div v-if="response" class="mt-8 w-full max-w-md bg-green-100 border-l-4 border-green-500 p-4 space-y-2 rounded-lg">
+    <div v-if="response" class="my-8 w-full max-w-4xl border-l-4 p-4 space-y-2 rounded-lg">
       <p class="font-semibold text-lg">Réponse de l'IA :</p>
       <div v-for="(line, index) in formatResponse(response)" :key="index" class="mt-2">
         <p v-if="line">{{ line }}</p>
