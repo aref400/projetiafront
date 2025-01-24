@@ -1,28 +1,20 @@
 # projetiafront
 
-Bienvenue sur la partie front de notre projet Ia :
+Bienvenue sur la partie front de notre projet IA :
 Pour pouvoir tester le site correctement veuillez télecharger le backend de notre site :
 https://github.com/NicolasCaze/Projet-ai-Ynov-M1-
 
 
 ## Project setup
+Pour installer toutes les dépendances :
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+Pour lancer le front :
 ```
 npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Customize configuration
